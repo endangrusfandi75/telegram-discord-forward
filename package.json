@@ -1,15 +1,14 @@
 {
   "name": "telegram-discord-forward",
   "version": "1.0.0",
-  "description": "Forward Telegram group messages to a Discord webhook",
+  "description": "Forward Telegram group messages to a Discord channel via bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "axios": "^1.20.0",
+    "discord.js": "^14.27.0",
     "dotenv": "^17.4.2",
-    "form-data": "^4.0.6",
     "input": "^1.0.1",
     "telegram": "^2.26.22"
   }

@@ -70,6 +70,7 @@ Atau forward pesan dari grup ke bot seperti `@userinfobot` atau `@getidsbot` unt
 ## Cara kerja
 
 - Pesan teks diteruskan apa adanya tanpa modifikasi
+- Bot Discord online karena terhubung ke Gateway (WebSocket) via `discord.js`
 - Media (foto, video, dokumen, voice, sticker) di-download lalu di-upload ke Discord
 - Album (beberapa media sekaligus) dikirim sebagai satu pesan Discord dengan banyak attachment
 - Rate limit Discord (429) ditangani otomatis dengan retry
