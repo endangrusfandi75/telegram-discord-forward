@@ -1,6 +1,6 @@
 # Telegram to Discord Forward Bot
 
-Forward pesan dari grup Telegram ke channel Discord via webhook. Berjalan sebagai user account (bukan bot Telegram).
+Forward pesan dari grup Telegram ke channel Discord via **Discord bot**. Berjalan sebagai user account (bukan bot Telegram).
 
 ## Setup
 
@@ -23,13 +23,14 @@ TELEGRAM_API_ID=12345678
 TELEGRAM_API_HASH=abcdef1234567890abcdef
 TELEGRAM_SESSION=
 TELEGRAM_TARGET_CHAT_ID=-1001234567890
-DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/xxxx/yyyy
+DISCORD_BOT_TOKEN=MTIzNDU2Nzg5MDEyMzQ1Njc4OQ...
+DISCORD_CHANNEL_ID=12345678901234567890
 ```
 
 ### 4. Jalankan
 
 ```bash
-node index.js
+npm start
 ```
 
 Pertama kali jalankan akan diminta login (nomor telepon, kode verifikasi, password 2FA). Setelah login, session string akan dicetak ke terminal — copy ke `TELEGRAM_SESSION` di `.env` agar tidak perlu login lagi.
@@ -52,14 +53,17 @@ Pertama kali jalankan akan diminta login (nomor telepon, kode verifikasi, passwo
 2. Lihat URL: `https://t.me/c/1234567890/1`
 3. Chat ID adalah `-100` + angka pertama: `-1001234567890`
 
-Atauforward pesan dari grup ke bot seperti `@userinfobot` atau `@getidsbot` untuk melihat chat ID.
+Atau forward pesan dari grup ke bot seperti `@userinfobot` atau `@getidsbot` untuk melihat chat ID.
 
-### Discord Webhook URL
+### Discord Bot Token & Channel ID
 
-1. Buka channel Discord target
-2. Klik **Edit Channel** > **Integrations** > **Webhooks**
-3. Klik **New Webhook**, beri nama, pilih channel
-4. Copy **Webhook URL**
+1. Buka https://discord.com/developers/applications
+2. Klik **New Application**, beri nama, lalu pilih tab **Bot**
+3. Klik **Reset Token** lalu **Copy** token-nya → isi ke `DISCORD_BOT_TOKEN`
+4. Di tab **OAuth2** → **URL Generator**, centang scope `bot`, lalu pilih permissions `Send Messages`, `Attach Files`, dan `View Channels`
+5. Buka URL yang dihasilkan, pilih server tujuan, dan invite bot ke server itu
+6. Aktifkan **Developer Mode** di Discord (Settings → Advanced → Developer Mode)
+7. Klik kanan channel tujuan → **Copy Channel ID** → isi ke `DISCORD_CHANNEL_ID`
 
 ---
 
