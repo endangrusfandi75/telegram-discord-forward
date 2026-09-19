@@ -25,6 +25,9 @@ TELEGRAM_SESSION=
 TELEGRAM_TARGET_CHAT_ID=-1001234567890
 DISCORD_BOT_TOKEN=MTIzNDU2Nzg5MDEyMzQ1Njc4OQ...
 DISCORD_CHANNEL_ID=12345678901234567890
+# Opsional
+TELEGRAM_FORWARD_LAST=0
+TELEGRAM_POLL_INTERVAL_SECONDS=15
 ```
 
 ### 4. Jalankan
@@ -73,6 +76,8 @@ Atau forward pesan dari grup ke bot seperti `@userinfobot` atau `@getidsbot` unt
 - Bot Discord online karena terhubung ke Gateway (WebSocket) via `discord.js`
 - Media (foto, video, dokumen, voice, sticker) di-download lalu di-upload ke Discord
 - Album (beberapa media sekaligus) dikirim sebagai satu pesan Discord dengan banyak attachment
+- Pesan baru diambil via **update push + polling API** (jaring pengaman), dengan deduplikasi ID
+- `TELEGRAM_FORWARD_LAST` (opsional): forward N pesan terakhir dari chat target saat start
 - Rate limit Discord (429) ditangani otomatis dengan retry
 - Koneksi Telegram reconnect otomatis jika terputus
 - Error per pesan di-log ke stderr tanpa menghentikan bot
